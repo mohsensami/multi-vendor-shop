@@ -13,6 +13,9 @@ def registerUser(request):
             user.role = User.CUSTOMER
             user.save()
             return redirect('/')
+        else:
+            print('invalid form')
+            print(form.errors)
     else:
         form = UserForm()
     context = {
