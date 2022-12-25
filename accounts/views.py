@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import UserForm
 from vendor.forms import VendorForm
 from .models import User, UserProfile
-from django.contrib import messages
+from django.contrib import messages, auth
 
 
 def registerUser(request):
@@ -54,3 +54,16 @@ def registerVendor(request):
         'v_form': v_form
     }
     return render(request, 'accounts/register-vendor.html', context)
+
+
+def login(request):
+    return render(request, 'accounts/login.html')
+
+def logout(request):
+    pass
+
+
+# def myAccount(request):
+#     user = request.user
+#     redirectUrl = detectUser(user)
+#     return redirect(redirectUrl)
