@@ -161,3 +161,16 @@ def customerDashboard(request):
 @user_passes_test(check_role_vendor)
 def vendorDashboard(request):
     return render(request, 'accounts/vendor-dashboard.html')
+
+
+def forgot_password(request):
+    return render(request, 'accounts/forgot_password.html')
+
+
+def reset_password_validate(request, uidb64, token):
+    # validate the user by decoding the token and user pk
+    return
+
+
+def reset_password(request):
+    return render(request, 'accounts/reset_password.html')
