@@ -1128,7 +1128,7 @@ a.add-menu-item:not(.add-menu-item-list) { display: none; }
 .jqte_fontsizes { z-index: 6; }
 .jqte_editor, .jqte .jqte_editor p { color: #919191 !important; font-family: "Karla", sans-serif !important; font-size: 12px !important; line-height: 16px !important; }
 /*rich textare editor Style*/
-.account-header { padding-top: 50px; }
+.account-header { padding-top: 0; }
 .user-info.user-info-sidebar { padding: 0; margin-bottom: 27px; }
 .user-info.user-info-sidebar .img-holder { width: 60px; border: 0; }
 .user-info.user-info-sidebar .text-holder { padding: 0; }
