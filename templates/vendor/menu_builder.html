@@ -24,13 +24,13 @@
                             {% if categories %}
                             <a href="" class="btn btn-success float-right m-1"><i class="fa fa-plus" aria-hidden="true"></i> Add Food</a>
                             <a href="" class="btn btn-info float-right m-1"><i class="fa fa-plus" aria-hidden="true"></i> Add Category</a>
-                            <table class="table table-hover table-borderless">
+                            <table class="table table-hover table-border table-striped">
                                 <tbody>
                                     {% for cat in categories %}
                                     <tr>
                                         <td class="text-left">{{ forloop.counter }}</td>
                                         <td class="text-left">
-                                            <a href="">
+                                            <a href="{% url 'fooditems_by_category' cat.id %}">
                                                 <p class="mb-0 font-weight-bold">{{ cat }}</p>
                                                 <small class="text-muted">{{cat.description}}</small>
                                             </a>
