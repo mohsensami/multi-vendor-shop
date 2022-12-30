@@ -73,6 +73,8 @@ def fooditems_by_category(request, pk=None):
     return render(request, 'vendor/fooditems_by_category.html', context)
 
 
+@login_required(login_url='login')
+@user_passes_test(check_role_vendor)
 def add_category(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
@@ -97,6 +99,8 @@ def add_category(request):
     return render(request, 'vendor/add_category.html', context)
 
 
+@login_required(login_url='login')
+@user_passes_test(check_role_vendor)
 def edit_category(request, pk=None):
     category = get_object_or_404(Category, pk=pk)
     if request.method == 'POST':
@@ -118,3 +122,12 @@ def edit_category(request, pk=None):
         'category': category
     }
     return render(request, 'vendor/edit_category.html', context)
+
+
+@login_required(login_url='login')
+@user_passes_test(check_role_vendor)
+def delete_category(request, pk=None):
+    category = get_object_or_404(Category, pk=pk)
+    category.delete()
+    messages.success(request, 'Category has been deleted successfully!')
+    return redirect('menu_builder')
