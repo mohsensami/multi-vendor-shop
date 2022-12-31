@@ -179,3 +179,10 @@ def edit_food(request, pk=None):
         'food': food
     }
     return render(request, 'vendor/edit_food.html', context)
+
+
+def delete_food(request, pk):
+    food = get_object_or_404(FoodItem, pk=pk)
+    food.delete()
+    messages.success(request, 'Food Item deleted successfully!')
+    return redirect('fooditems_by_category', food.category.id)
