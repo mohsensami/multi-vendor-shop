@@ -45,7 +45,7 @@
                                             
                                             <div class="post-title">
                                                 <h5>
-                                                    <a href="{% url 'vendor_detail' vendor.vendor_slug %}">{{ vendor.vendor_name }}</a>
+                                                    <a href="">{{ vendor.vendor_name }}</a>
                                                 </h5>
                                             </div>
                                             {% if vendor.user_profile.address %}
@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="list-option">
 
-                                            <a href="{% url 'vendor_detail' vendor.vendor_slug %}" class="viewmenu-btn text-color">View Menu</a>
+                                            <a href="" class="viewmenu-btn text-color">View Menu</a>
                                         </div>
                                     </li>
                                     {% endfor %}
@@ -73,7 +73,7 @@
                                 <strong>I'm not Listed!</strong><span>is your restaurant or
                                     business not
                                     listed on over site</span>
-                                <a href="" class="request-btn">Add Your business!</a>
+                                <a href="{% url 'register-vendor' %}" class="request-btn">Add Your business!</a>
                             </div>
                         </div>
                     </div>
