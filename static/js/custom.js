@@ -10,8 +10,12 @@ $(document).ready(function(){
             type: 'GET',
             url: url,
             success: function(response){
-                if(response.status == 'Failed'){
-                    console.log(response);
+                if(response.status == 'login_required'){
+                    swal(response.message, '', 'info').then(function(){
+                        window.location = '/login';
+                    })
+                } else if(response.status == 'Failed'){
+                    swal(response.message, '', 'error')
                 } else {
                     $('#cart_counter').html(response.cart_counter['cart_count']);
                     $('#qty-'+food_id).html(response.qty);
@@ -38,8 +42,12 @@ $(document).ready(function(){
             type: 'GET',
             url: url,
             success: function(response){
-                if(response.status == 'Failed'){
-                    console.log(response);
+                if(response.status == 'login_required'){
+                    swal(response.message, '', 'info').then(function(){
+                        window.location = '/login';
+                    })
+                } else if(response.status == 'Failed'){
+                    swal(response.message, '', 'error')
                 } else {
                     $('#cart_counter').html(response.cart_counter['cart_count']);
                     $('#qty-'+food_id).html(response.qty);
