@@ -14,7 +14,8 @@ $(document).ready(function(){
             url: url,
             data: data,
             success: function(response){
-                console.log(response);
+                $('#cart_counter').html(response.cart_counter['cart_count']);
+                $('#qty-'+food_id).html(response.qty);
             }
         })
     })
