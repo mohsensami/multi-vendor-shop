@@ -7,4 +7,6 @@ urlpatterns = [
     path('<slug:vendor_slug>/', views.vendor_detail, name='vendor_detail'),
     # ADD TO CART
     path('add_to_cart/<int:food_id>/', views.add_to_cart, name='add_to_cart'),
+    # DECRESE CART
+    path('decrease_cart/<int:food_id>/', views.decrese_cart, name='decrease_cart'),
 ]
