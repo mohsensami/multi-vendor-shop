@@ -74,6 +74,7 @@ $(document).ready(function(){
                     $('#cart_counter').html(response.cart_counter['cart_count']);
                     swal(response.status, response.message, 'success');
                     removeCartItem(0, cart_id);
+                    checkEmptyCart();
                 }
             }
         })
@@ -85,7 +86,14 @@ $(document).ready(function(){
             // remove the cart item element
             document.getElementById("cart-item-"+cart_id).remove()
         }
-        
+    }
+
+    // Check if the cart is empty
+    function checkEmptyCart(){
+        var cart_counter = document.getElementById('cart_counter').innerHTML
+        if(cart_counter == 0){
+            document.getElementById("empty-cart").style.display = "block";
+        }
     }
 
     
