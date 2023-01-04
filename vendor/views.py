@@ -190,3 +190,7 @@ def delete_food(request, pk):
     food.delete()
     messages.success(request, 'Food Item deleted successfully!')
     return redirect('fooditems_by_category', food.category.id)
+
+
+def opening_hours(request):
+    return render(request, 'vendor/opening_hours.html')
