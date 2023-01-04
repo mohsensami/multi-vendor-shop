@@ -165,7 +165,14 @@ $(document).ready(function(){
                 },
                 success: function(response){
                     if(response.status == 'success'){
-                        console.log(response);
+                        if(response.is_closed == 'Closed'){
+                            html = '<tr id="hour-'+response.id+'"><td><b>'+response.day+'</b></td><td>Closed</td><td><a href="#" class="remove_hour" data-url="/vendor/opening-hours/remove/'+response.id+'/">Remove</a></td></tr>';
+                        }else{
+                            html = '<tr id="hour-'+response.id+'"><td><b>'+response.day+'</b></td><td>'+response.from_hour+' - '+response.to_hour+'</td><td><a href="#" class="remove_hour" data-url="/vendor/opening-hours/remove/'+response.id+'/">Remove</a></td></tr>';
+                        }
+                        
+                        $(".opening_hours").append(html)
+                        document.getElementById("opening_hours").reset();
                     }else{
                         swal(response.message, '', "error")
                     }
