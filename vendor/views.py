@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, render, redirect
 
 from accounts.models import UserProfile
-from vendor.models import Vendor
-from .forms import VendorForm
+from vendor.models import Vendor, OpeningHour
+from .forms import VendorForm, OpeningHourForm
 from menu.forms import CategoryForm, FoodItemForm
 from accounts.forms import UserProfileForm
 from django.contrib import messages
@@ -193,4 +193,10 @@ def delete_food(request, pk):
 
 
 def opening_hours(request):
-    return render(request, 'vendor/opening_hours.html')
+    opening_hours = OpeningHour.objects.filter(vendor=get_vendor(request))
+    form = OpeningHourForm
+    context = {
+        'form': form,
+        'opening_hours': opening_hours
+    }
+    return render(request, 'vendor/opening_hours.html', context)
