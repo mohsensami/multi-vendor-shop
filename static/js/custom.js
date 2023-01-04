@@ -144,7 +144,36 @@ $(document).ready(function(){
 
         console.log(day, from_hour, to_hour, is_closed, csrf_token)
 
-        
+        if(is_closed){
+            is_closed = 'True'
+            condition = "day != ''"
+        }else{
+            is_closed = 'False'
+            condition = "day != '' && from_hour != '' && to_hour != ''"
+        }
+
+        if(eval(condition)){
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: {
+                    'day': day,
+                    'from_hour': from_hour,
+                    'to_hour': to_hour,
+                    'is_closed': is_closed,
+                    'csrfmiddlewaretoken': csrf_token,
+                },
+                success: function(response){
+                    if(response.status == 'success'){
+                        console.log(response);
+                    }else{
+                        swal(response.message, '', "error")
+                    }
+                }
+            })
+        }else{
+            swal('Please fill all fields', '', 'info')
+        }
     });
 
     
